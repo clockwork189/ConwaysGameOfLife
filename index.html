@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+        <meta charset="UTF-8" />
+		<title>Conways Game of Life</title>
+		<style>
+            *{
+            	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+            #mainGameCanvas {
+            	display: block;
+                margin: 40px auto;
+                outline: none;
+                border: 5 px solid white;
+            }
+
+            #footer {
+                width:950px;
+                margin: 0 auto;
+                text-align: center;
+                color: #fff;
+            }
+
+            #footer a{
+                color: #fff;
+                font-family: 'Trebuchet MS', Helvetica, sans-serif;
+                font-size: 11px;   
+            }
+        </style>
+	</head>
+	<body>
+		<canvas id="mainGameCanvas" width="800" height="600"></canvas>
+        <script src="app.js"></script>
+        <script src="canvas.js"></script>
+	</body>
+</html>

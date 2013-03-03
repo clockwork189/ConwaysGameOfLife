@@ -1,11 +1,11 @@
 var GameOfLife = function () {
     var self = {};
 
-    self.init = function () {
+    self.init = function (rows, columns) {
         var grid = [];
-        for(var i = 0; i < 15; i++) {
+        for(var i = 0; i < rows; i++) {
             var row = [];
-            for(var j = 0; j < 30; j++) {
+            for(var j = 0; j < columns; j++) {
                 var column = [0];
                 row.push(column);
             }
@@ -64,17 +64,18 @@ var GameOfLife = function () {
         return counter;
     };
 
-    var getNextGen = function (matrix) {
+    self.getNextGen = function (matrix) {
         var newMatrix = matrix;
         for(var i = 0; i < matrix.length; i++) {
             for(var j = 0; j < matrix[i].length; j++) {
                 if(check2DMatrix(matrix, i, j)) {
-                    var numNeighbors = getNumNeighbors(matrix, i , j);
-                    if(matrix[i][j] == 1) {
+                    var numNeighbors = getNumberOfNeighbors(matrix, i , j);
+                    var oldMatrixSpot = matrix[i][j];
+                    if(oldMatrixSpot == 1) {
                         if(numNeighbors < 2 || numNeighbors > 3) {
                             newMatrix[i][j] = 0;
                         }
-                    } else if(matrix[i][j] == 0) {
+                    } else if(oldMatrixSpot == 0) {
                         if(numNeighbors == 3) {
                             newMatrix[i][j] = 1;
                         }
@@ -82,7 +83,6 @@ var GameOfLife = function () {
                 }
             }
         }
-        //console.log(matrix);
         return newMatrix;
     };
 
